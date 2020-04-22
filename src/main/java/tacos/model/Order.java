@@ -12,7 +12,7 @@ import java.util.List;
 public class Order {
     private Long id;
     private List<Taco> designs = new ArrayList<>();
-    private Date createdAt;
+    private Date placedAt;
     @NotBlank(message = "Name is required")
     private String name;
     @NotBlank(message = "Street address required")
@@ -31,7 +31,7 @@ public class Order {
     private String ccCVV;
 
     public void addDesign(Taco design) {
-        designs.add(design);
+        this.designs.add(design);
     }
 
     public List<Taco> getDesigns() {
@@ -50,12 +50,12 @@ public class Order {
         this.id = id;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Date getPlacedAt() {
+        return placedAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setPlacedAt(Date placedAt) {
+        this.placedAt = placedAt;
     }
 
     public String getName() {

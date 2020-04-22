@@ -13,6 +13,7 @@ import tacos.model.Ingredient;
 import tacos.model.Taco;
 
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -40,11 +41,13 @@ public class JdbcTacoRepository implements TacoRepository {
     private long saveTacoInfo(Taco taco) {
         taco.setDate(new Date());
         PreparedStatementCreator psc =
-                new PreparedStatementCreatorFactory("INSERT INTO taco (name, createdAt) values ( ?, ? )").
+                new PreparedStatementCreatorFactory("INSERT INTO Taco (name, createdAt) values ( ?, ? )", Types.VARCHAR, Types.TIMESTAMP).
                         newPreparedStatementCreator(Arrays.asList(taco.getName(), new Timestamp(taco.getDate().getTime())));
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbc.update(psc, keyHolder);
-        return keyHolder.getKey().longValue();
+        Number key = keyHolder.getKey();
+        System.out.println("key - " + key);
+        return key != null ? key.longValue() : 1;
     }
 
     private void saveIngredientToTaco(Ingredient ingredient, long tacoId) {

@@ -32,7 +32,7 @@ public class JdbcOrderRepository implements OrderRepository {
 
     @Override
     public Order save(Order order) {
-        order.setCreatedAt(new Date());
+        order.setPlacedAt(new Date());
         long orderId = saveOrderDetails(order);
         order.setId(orderId);
         List<Taco> tacos = order.getDesigns();
@@ -45,7 +45,7 @@ public class JdbcOrderRepository implements OrderRepository {
     private long saveOrderDetails(Order order) {
         @SuppressWarnings("unchecked")
         Map<String, Object> values = objectMapper.convertValue(order, Map.class);
-        values.put("placedAt", order.getCreatedAt());
+        values.put("placedAt", order.getPlacedAt());
         long orderId = orderInserter.executeAndReturnKey(values).longValue();
         LOG.debug("saved order with id: " + orderId);
         return orderId;
