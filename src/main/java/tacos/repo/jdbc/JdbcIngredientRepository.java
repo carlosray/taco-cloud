@@ -1,4 +1,4 @@
-package tacos.repo;
+package tacos.repo.jdbc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import tacos.model.Ingredient;
+import tacos.repo.IngredientRepository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
