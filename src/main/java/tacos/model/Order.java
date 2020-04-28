@@ -37,10 +37,20 @@ public class Order implements Serializable {
     private String ccExpiration;
     @Digits(integer = 3, fraction = 0, message = "Must be 3 numbers")
     private String ccCVV;
+    @ManyToOne(targetEntity = User.class)
+    private User user;
 
     @PrePersist
     void placedAt() {
         this.placedAt = new Date();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void addDesign(Taco design) {
