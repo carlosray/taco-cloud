@@ -37,9 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/design", "/orders")
-                .hasRole("USER")
-                .antMatchers("/", "/**").permitAll()
-                .antMatchers("/h2-console/**").anonymous()
+                .access("hasRole('ROLE_USER')")
+                .antMatchers("/", "/**").access("permitAll")
                 .and()
                 .csrf().ignoringAntMatchers("/h2-console/**")
                 .and().headers().frameOptions().sameOrigin()
@@ -49,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/design", true)
                 .and()
                 .logout()
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/")
+                .permitAll();
     }
 }
