@@ -1,5 +1,7 @@
 package tacos.model;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -7,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@RestResource(rel = "tacos", path = "tacos")
 public class Taco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
