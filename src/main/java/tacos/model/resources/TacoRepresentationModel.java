@@ -3,12 +3,12 @@ package tacos.model.resources;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.RepresentationModel;
 import tacos.model.Taco;
-import tacos.web.DesignTacoController;
+import tacos.web.RecentTacoController;
 
 import java.util.Date;
 
 public class TacoRepresentationModel extends RepresentationModel<TacoRepresentationModel> {
-    private final IngredientRepresentationModelAssembler ingredientModel = new IngredientRepresentationModelAssembler(DesignTacoController.class);
+    private final IngredientRepresentationModelAssembler ingredientModel = new IngredientRepresentationModelAssembler(RecentTacoController.class);
     private final Date createdAt;
     private final String name;
     private final CollectionModel<IngredientRepresentationModel> ingredients;
