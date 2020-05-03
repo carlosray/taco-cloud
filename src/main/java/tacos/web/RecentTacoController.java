@@ -28,8 +28,8 @@ public class RecentTacoController {
     public CollectionModel<TacoRepresentationModel> recentTacos() {
         PageRequest pageRequest = PageRequest.of(0, 12, Sort.by("createdAt").descending());
         Iterable<Taco> all = tacoRepository.findAll(pageRequest);
-        CollectionModel<TacoRepresentationModel> modelTacos = new TacoRepresentationModelAssembler(DesignTacoController.class).toCollectionModel(all);
-        Link link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(DesignTacoController.class).recentTacos())
+        CollectionModel<TacoRepresentationModel> modelTacos = new TacoRepresentationModelAssembler(RecentTacoController.class).toCollectionModel(all);
+        Link link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(RecentTacoController.class).recentTacos())
                 .withRel("recents");
         modelTacos.add(link);
         return modelTacos;
