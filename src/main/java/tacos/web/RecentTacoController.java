@@ -23,7 +23,7 @@ public class RecentTacoController {
         this.tacoRepository = tacoRepository;
     }
 
-    @GetMapping(path = "/tacos/recent", produces = "application/json")
+    @GetMapping(path = "/tacos/recent", produces = "application/hal+json")
     @ResponseBody
     public CollectionModel<TacoRepresentationModel> recentTacos() {
         PageRequest pageRequest = PageRequest.of(0, 12, Sort.by("createdAt").descending());
