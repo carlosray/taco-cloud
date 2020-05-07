@@ -1,17 +1,39 @@
 package tacos.web;
 
+import org.apache.activemq.artemis.jms.client.ActiveMQQueue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.hateoas.server.RepresentationModelProcessor;
+import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import tacos.model.Order;
 import tacos.model.Taco;
+
+import javax.jms.Destination;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+    @Bean
+    public Destination destination() {
+        return new ActiveMQQueue("tacocloud.order.queue");
+    }
+
+    @Bean
+    public MappingJackson2MessageConverter messageConverter() {
+        MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
+        messageConverter.setTypeIdPropertyName("_typeId");
+        Map<String, Class<?>> typeIdMapping = new HashMap<>();
+        typeIdMapping.put("order", Order.class);
+        messageConverter.setTypeIdMappings(typeIdMapping);
+        return messageConverter;
+    }
 
     @Bean
     public RepresentationModelProcessor<PagedModel<EntityModel<Taco>>> tacoProcessor(EntityLinks links) {

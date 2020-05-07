@@ -6,13 +6,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import tacos.model.Ingredient;
+import tacos.model.Order;
 import tacos.model.Taco;
 import tacos.model.User;
 import tacos.repo.IngredientRepository;
+import tacos.repo.OrderRepository;
 import tacos.repo.TacoRepository;
 import tacos.repo.UserRepository;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Configuration
@@ -20,7 +24,7 @@ import java.util.List;
 public class DevelopmentConfig {
 
     @Bean
-    public CommandLineRunner dataLoader(TacoRepository tacoRepository, IngredientRepository ingredientRepository, UserRepository userRepository, PasswordEncoder encoder) {
+    public CommandLineRunner dataLoader(TacoRepository tacoRepository, IngredientRepository ingredientRepository, UserRepository userRepository, OrderRepository orderRepository, PasswordEncoder encoder) {
         return args -> {
             List<Ingredient> ingredients = Arrays.asList(
                     new Ingredient("FLTO", "Flour Tortilla", Ingredient.Type.WRAP),
@@ -50,9 +54,25 @@ public class DevelopmentConfig {
                     new Ingredient("CHED", "Cheddar", Ingredient.Type.CHEESE),
                     new Ingredient("SLSA", "Salsa", Ingredient.Type.SAUCE)
             ));
+
+            Order order = new Order(
+                    1L,
+                    Collections.singletonList(taco),
+                    new Date(),
+                    "nameOrder",
+                    "streetOrder",
+                    "cityOrder",
+                    "stateOrder",
+                    "zipOrder",
+                    "5500000000000004",
+                    "12/22",
+                    "345",
+                    testUser);
+            //сохранение в репозитории
             ingredients.forEach(ingredientRepository::save);
             tacoRepository.save(taco);
             userRepository.save(testUser);
+            orderRepository.save(order);
         };
     }
 }

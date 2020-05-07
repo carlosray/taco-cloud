@@ -40,6 +40,24 @@ public class Order implements Serializable {
     @ManyToOne(targetEntity = User.class)
     private User user;
 
+    public Order() {
+    }
+
+    public Order(Long id, List<Taco> designs, Date placedAt, @NotBlank(message = "Name is required") String name, @NotBlank(message = "Street address required") String street, @NotBlank(message = "city required") String city, @NotBlank(message = "state required") String state, @NotBlank(message = "zip required") String zip, @CreditCardNumber(message = "Credit card number not valid") String ccNumber, @Pattern(regexp = "^(0[1-9]|1[0-2])([/])([1-9][0-9])$", message = "Must be formatted MM/YY") String ccExpiration, @Digits(integer = 3, fraction = 0, message = "Must be 3 numbers") String ccCVV, User user) {
+        this.id = id;
+        this.designs = designs;
+        this.placedAt = placedAt;
+        this.name = name;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.ccNumber = ccNumber;
+        this.ccExpiration = ccExpiration;
+        this.ccCVV = ccCVV;
+        this.user = user;
+    }
+
     @PrePersist
     void placedAt() {
         this.placedAt = new Date();
@@ -148,7 +166,10 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         return "Order{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", designs=" + designs +
+                ", placedAt=" + placedAt +
+                ", name='" + name + '\'' +
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
@@ -156,6 +177,7 @@ public class Order implements Serializable {
                 ", ccNumber='" + ccNumber + '\'' +
                 ", ccExpiration='" + ccExpiration + '\'' +
                 ", ccCVV='" + ccCVV + '\'' +
+                ", user=" + user +
                 '}';
     }
 }
