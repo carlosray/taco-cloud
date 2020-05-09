@@ -1,13 +1,12 @@
-package tacos.model.messages.listener;
+package tacos.model.messages.jms.listener;
 
-import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 import tacos.model.Order;
 
 @Component
-public class OrderListener {
+public class JmsOrderListener{
 
-    @JmsListener(destination = "tacocloud.order.queue")
+    //@JmsListener(destination = "tacocloud.order.queue")
     public void receiveOrder(Order order) {
         System.out.println("received order: " + order);
     }

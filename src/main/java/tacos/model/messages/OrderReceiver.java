@@ -1,4 +1,4 @@
-package tacos.model.messages.jms;
+package tacos.model.messages;
 
 import tacos.model.Order;
 

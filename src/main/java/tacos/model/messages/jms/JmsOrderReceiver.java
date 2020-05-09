@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import tacos.model.Order;
+import tacos.model.messages.OrderReceiver;
 
 import javax.jms.Destination;
 
 @Service
-public class JmsOrderReceiver  implements OrderReceiver{
+public class JmsOrderReceiver  implements OrderReceiver {
 
     private Destination destination;
     private JmsTemplate jms;

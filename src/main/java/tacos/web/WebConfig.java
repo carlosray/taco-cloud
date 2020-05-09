@@ -1,6 +1,8 @@
 package tacos.web;
 
 import org.apache.activemq.artemis.jms.client.ActiveMQQueue;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.hateoas.EntityModel;
@@ -26,7 +28,12 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public MappingJackson2MessageConverter messageConverter() {
+    public MessageConverter rabbitMessageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+
+    @Bean
+    public MappingJackson2MessageConverter jmsMessageConverter() {
         MappingJackson2MessageConverter messageConverter = new MappingJackson2MessageConverter();
         messageConverter.setTypeIdPropertyName("_typeId");
         Map<String, Class<?>> typeIdMapping = new HashMap<>();

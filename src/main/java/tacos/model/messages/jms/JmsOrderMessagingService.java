@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import tacos.model.Order;
+import tacos.model.messages.OrderMessagingService;
 
 import javax.jms.Destination;
 
