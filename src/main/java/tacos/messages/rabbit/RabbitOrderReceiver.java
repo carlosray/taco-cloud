@@ -1,4 +1,4 @@
-package tacos.model.messages.rabbit;
+package tacos.messages.rabbit;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -6,7 +6,7 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tacos.model.Order;
-import tacos.model.messages.OrderReceiver;
+import tacos.messages.OrderReceiver;
 
 @Service
 public class RabbitOrderReceiver implements OrderReceiver {

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import tacos.model.service.CustomAuthorityDeserializer;
+import tacos.service.CustomAuthorityDeserializer;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

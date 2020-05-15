@@ -1,4 +1,4 @@
-package tacos.model.service;
+package tacos.service;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

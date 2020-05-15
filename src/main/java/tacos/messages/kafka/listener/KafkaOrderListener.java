@@ -1,4 +1,4 @@
-package tacos.model.messages.kafka.listener;
+package tacos.messages.kafka.listener;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.stereotype.Component;

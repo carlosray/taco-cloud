@@ -1,10 +1,10 @@
-package tacos.model.messages.kafka;
+package tacos.messages.kafka;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import tacos.model.Order;
-import tacos.model.messages.OrderMessagingService;
+import tacos.messages.OrderMessagingService;
 
 @Service
 public class KafkaOrderMessagingService implements OrderMessagingService {

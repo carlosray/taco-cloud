@@ -1,4 +1,4 @@
-package tacos.model.messages.rabbit.listener;
+package tacos.messages.rabbit.listener;
 
 import org.springframework.stereotype.Component;
 import tacos.model.Order;

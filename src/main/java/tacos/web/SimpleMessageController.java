@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import tacos.model.Order;
-import tacos.model.messages.OrderMessagingService;
-import tacos.model.messages.OrderReceiver;
+import tacos.messages.OrderMessagingService;
+import tacos.messages.OrderReceiver;
 import tacos.repo.OrderRepository;
 
 @Controller

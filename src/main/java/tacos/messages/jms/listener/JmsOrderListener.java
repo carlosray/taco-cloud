@@ -1,4 +1,4 @@
-package tacos.model.messages.jms.listener;
+package tacos.messages.jms.listener;
 
 import org.springframework.stereotype.Component;
 import tacos.model.Order;

@@ -1,10 +1,10 @@
-package tacos.model.messages.jms;
+package tacos.messages.jms;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import tacos.model.Order;
-import tacos.model.messages.OrderMessagingService;
+import tacos.messages.OrderMessagingService;
 
 import javax.jms.Destination;
 

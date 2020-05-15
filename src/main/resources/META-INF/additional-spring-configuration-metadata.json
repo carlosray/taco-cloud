@@ -1,0 +1,29 @@
+{
+  "properties": [
+    {
+      "name": "tacocloud.email.username",
+      "type": "java.lang.String",
+      "description": "Username."
+    },
+    {
+      "name": "tacocloud.email.password",
+      "type": "java.lang.String",
+      "description": "Password."
+    },
+    {
+      "name": "tacocloud.email.host",
+      "type": "java.lang.String",
+      "description": "host."
+    },
+    {
+      "name": "tacocloud.email.mailbox",
+      "type": "java.lang.String",
+      "description": "Mailbox."
+    },
+    {
+      "name": "tacocloud.email.poll-rate",
+      "type": "java.lang.String",
+      "description": "poll-rate."
+    }
+  ]
+}
